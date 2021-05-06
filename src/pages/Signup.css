@@ -1,0 +1,40 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 2rem;
+  margin: 3rem 0 0 2rem;
+}
+
+.welcome {
+  margin-top: 2.5rem;
+  margin-left: 2rem;
+  align-self: start;
+  color: #808289;
+  font-weight: bold;
+
+  font-size: 40px;
+}
+
+.tagline {
+  margin-top: 0;
+  margin-left: 2rem;
+  align-self: start;
+  font-size: 19px;
+}
+
+.illustration {
+  margin-top: 40px;
+}
+
+.buttonsgrid {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

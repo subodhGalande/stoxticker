@@ -1,0 +1,7 @@
+{
+  "name": "stoxticker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
