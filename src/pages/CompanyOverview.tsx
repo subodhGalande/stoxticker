@@ -7,6 +7,8 @@ import {
   IonText,
 } from "@ionic/react";
 
+import "./CompanyOverview.css";
+
 const CompanyOverview: React.FC = () => {
   return (
     <IonPage>

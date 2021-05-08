@@ -15,6 +15,7 @@ import {
 import { IonReactRouter } from "@ionic/react-router";
 import { home, person, bookmarks } from "ionicons/icons";
 import Signup from "./pages/Signup";
+import CompanyOverview from "./pages/CompanyOverview";
 
 import Maintabs from "./pages/maintabs";
 
@@ -44,6 +45,11 @@ const App: React.FC = () => {
     <IonApp>
       <IonContent fullscreen={true}>
         <IonReactRouter>
+          <Route
+            path="/CompanyOverview"
+            component={CompanyOverview}
+            exact={true}
+          />
           <Route path="/Signup" component={Signup} exact={true} />
           <Route path="/" component={isLoggedIn ? Maintabs : Signup} />
         </IonReactRouter>

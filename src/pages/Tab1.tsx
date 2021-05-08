@@ -23,7 +23,6 @@ import { Redirect, Route } from "react-router-dom";
 import { IonReactRouter } from "@ionic/react-router";
 import { personCircleOutline, arrowForwardOutline } from "ionicons/icons";
 import Signup from "./Signup";
-import CompanyOverview from "./CompanyOverview";
 
 import ExploreContainer from "../components/ExploreContainer";
 import "./Tab1.css";
