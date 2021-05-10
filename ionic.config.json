@@ -1,7 +1,9 @@
 {
   "name": "stoxticker",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "linuxAndroidStudioPath": "/snap/android-studio/current/android-studio/bin"
+    }
   },
   "type": "react"
 }

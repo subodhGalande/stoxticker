@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.stoxticker.com;
 
 import android.os.Bundle;
 

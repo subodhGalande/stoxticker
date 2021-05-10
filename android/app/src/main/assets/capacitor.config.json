@@ -1,13 +1,10 @@
 {
-  "appId": "io.ionic.starter",
+  "linuxAndroidStudioPath": "/snap/android-studio/current/android-studio/bin/studio.sh",
+  "appId": "com.stoxticker.com",
   "appName": "stoxticker",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
   "webDir": "build",
-  "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 0
-    }
-  },
-  "cordova": {}
+  "npmClient": "npm",
+  "server": {
+    "url": "http://192.168.0.30:8100"
+  }
 }
