@@ -12,6 +12,16 @@
   margin-top: -0.3rem;
 }
 
-.prices {
-  display: inline-block;
+.tickerprice {
+  margin-top: -0.5rem;
+  margin-left: -0.3rem;
+  margin-bottom: -0.5rem;
+}
+
+.tickerchange {
+  margin-top: 1.15rem;
+}
+
+.thirdrowvalues {
+  padding-top: 0.3rem;
 }

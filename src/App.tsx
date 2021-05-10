@@ -18,6 +18,7 @@ import Signup from "./pages/Signup";
 import CompanyOverview from "./pages/CompanyOverview";
 
 import Maintabs from "./pages/maintabs";
+import Profile from "./pages/Profile";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -45,6 +46,7 @@ const App: React.FC = () => {
     <IonApp>
       <IonContent fullscreen={true}>
         <IonReactRouter>
+          <Route path="/Profile" component={Profile} exact={true} />
           <Route
             path="/CompanyOverview"
             component={CompanyOverview}
