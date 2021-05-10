@@ -15,6 +15,7 @@ import {
 import ExploreContainer from "../components/ExploreContainer";
 import "./Tab2.css";
 import React, { useState } from "react";
+import CompanyOverview from "./CompanyOverview";
 
 const Tab2: React.FC = () => {
   const [searchText, setSearchText] = useState("");
@@ -43,7 +44,7 @@ const Tab2: React.FC = () => {
               <h5>Results</h5>
             </IonText>
           </IonListHeader>
-          <IonItem>
+          <IonItem routerLink="/CompanyOverview">
             <IonLabel color="dark">
               <IonText>
                 <strong> TESO </strong> <br />{" "}

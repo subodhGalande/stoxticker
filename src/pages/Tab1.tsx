@@ -21,7 +21,11 @@ import {
 } from "@ionic/react";
 import { Redirect, Route } from "react-router-dom";
 import { IonReactRouter } from "@ionic/react-router";
-import { personCircleOutline, arrowForwardOutline } from "ionicons/icons";
+import {
+  personCircleOutline,
+  arrowForwardOutline,
+  power,
+} from "ionicons/icons";
 import Signup from "./Signup";
 
 import ExploreContainer from "../components/ExploreContainer";
@@ -35,19 +39,18 @@ const Tab1: React.FC = () => {
   return (
     <IonPage>
       <IonHeader class="ion-no-border">
-        <IonToolbar color="primary">
+        <IonToolbar>
           <IonTitle>
-            <strong> Home </strong>
+            Hi <b>Jack </b>
           </IonTitle>
 
           <IonButton
             href="./CompanyOverview"
             className="accountButton"
-            color="primary"
-            fill="solid"
             slot="end"
+            fill="clear"
           >
-            <IonIcon size="large" icon={personCircleOutline}></IonIcon>
+            <IonIcon color="danger" icon={power}></IonIcon>
           </IonButton>
         </IonToolbar>
       </IonHeader>

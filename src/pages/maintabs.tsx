@@ -17,6 +17,7 @@ import Signup from "./Signup";
 import Tab1 from "./Tab1";
 import Tab2 from "./Tab2";
 import Tab3 from "./Tab3";
+import CompanyOverview from "./CompanyOverview";
 
 const Maintabs: React.FC = () => {
   return (
@@ -25,6 +26,9 @@ const Maintabs: React.FC = () => {
         <IonRouterOutlet>
           <Route exact path="/tab1">
             <Tab1 />
+          </Route>
+          <Route exact path="/CompanyOverview">
+            <CompanyOverview />
           </Route>
           <Route exact path="/tab2">
             <Tab2 />

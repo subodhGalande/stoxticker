@@ -14,6 +14,7 @@ import {
   IonCard,
   IonCardHeader,
   IonCardContent,
+  IonButton,
   IonCardSubtitle,
   IonCardTitle,
 } from "@ionic/react";
@@ -23,6 +24,7 @@ import {
   cogOutline,
   sparkles,
   earthOutline,
+  bookmarks,
   cashOutline,
   caretUpOutline,
   caretDownOutline,
@@ -39,9 +41,12 @@ const CompanyOverview: React.FC = () => {
           <IonTitle>
             <strong>Company Overview</strong>
           </IonTitle>
+          <IonButton slot="end">
+            <IonIcon icon={bookmarks}></IonIcon>{" "}
+          </IonButton>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen={true}>
+      <IonContent fullscreen={true} className="scrollcontent">
         <div className="CompanyOverview">
           <IonText color="dark">
             <h3>

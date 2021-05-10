@@ -25,3 +25,11 @@
 .thirdrowvalues {
   padding-top: 0.3rem;
 }
+
+.scrollcontent {
+  overflow: scroll;
+}
+
+ion-button {
+  --box-shadow: none;
+}
