@@ -11,3 +11,7 @@
   margin-left: -0.3rem;
   margin-top: -0.3rem;
 }
+
+.prices {
+  display: inline-block;
+}
