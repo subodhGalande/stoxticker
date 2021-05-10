@@ -8,9 +8,19 @@ import {
   IonChip,
   IonLabel,
   IonIcon,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from "@ionic/react";
 
-import { cogOutline, earthOutline, cashOutline } from "ionicons/icons";
+import {
+  cogOutline,
+  earthOutline,
+  cashOutline,
+  caretUpOutline,
+  caretDownOutline,
+} from "ionicons/icons";
+import React from "react";
 
 import "./CompanyOverview.css";
 
@@ -48,6 +58,57 @@ const CompanyOverview: React.FC = () => {
               <IonLabel>Exchange</IonLabel>
             </IonChip>
           </div>
+
+          <div>
+            <h1>
+              <strong>1927.40</strong>
+            </h1>
+            <span>
+              <IonText color="success">
+                <p>
+                  <IonIcon size="small" icon={caretUpOutline}></IonIcon> 1.29
+                  (0.69%)
+                </p>
+              </IonText>
+            </span>
+          </div>
+
+          <IonGrid>
+            <IonRow>
+              <IonCol size="4">
+                <IonText color="dark">
+                  <strong>Open</strong>
+                </IonText>
+                <IonText>
+                  <div>
+                    <span>&#8377;</span> 1926.40
+                  </div>
+                </IonText>
+              </IonCol>
+
+              <IonCol>
+                <IonText color="dark">
+                  <strong>High</strong>
+                </IonText>
+                <IonText>
+                  <div>
+                    <span>&#8377;</span> 1926.40
+                  </div>
+                </IonText>
+              </IonCol>
+
+              <IonCol>
+                <IonText color="dark">
+                  <strong>Low</strong>
+                </IonText>
+                <IonText>
+                  <div>
+                    <span>&#8377;</span> 1926.40
+                  </div>
+                </IonText>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
         </div>
       </IonContent>
     </IonPage>
