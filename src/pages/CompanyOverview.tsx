@@ -54,7 +54,9 @@ const CompanyOverview: React.FC = () => {
             </h3>
           </IonText>
           <IonText className="ion-text-uppercase" color="medium">
-            <h3 className="tickersymbol">rel</h3>
+            <h6 className="tickersymbol">
+              <b>rel</b>
+            </h6>
           </IonText>
           <div className="chips">
             <IonChip color="primary">

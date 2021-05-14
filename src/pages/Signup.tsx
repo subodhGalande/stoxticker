@@ -50,23 +50,6 @@ const Signup: React.FC = () => {
         <IonGrid className="buttonsgrid">
           <IonRow>
             <IonCol>
-              <IonButton
-                strong={true}
-                fill="outline"
-                shape="round"
-                size="large"
-                color="primary-shade"
-              >
-                <IonIcon slot="start" icon={logoGoogle} />
-                Google Sign up
-              </IonButton>
-            </IonCol>
-          </IonRow>
-          <IonText color="dark">
-            <h4>Or</h4>
-          </IonText>
-          <IonRow>
-            <IonCol>
               <IonButton strong={true} fill="solid" shape="round" size="large">
                 <IonIcon slot="start" icon={logoGoogle} />
                 Google Sign in

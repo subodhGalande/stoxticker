@@ -26,13 +26,13 @@ const Tab3: React.FC = () => {
       <IonHeader class="ion-no-border">
         <IonToolbar color="primary">
           <IonTitle>
-            <strong> Watchlist </strong>{" "}
+            <b> Watchlist </b>{" "}
           </IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen={true}>
-        <IonCard>
+        <IonCard routerLink="/CompanyOverview">
           <IonCardHeader className="ion-float-left">
             <IonCardTitle color="secondary">
               {" "}
