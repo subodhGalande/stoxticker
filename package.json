@@ -5,6 +5,7 @@
   "dependencies": {
     "@capacitor/android": "^2.4.7",
     "@capacitor/core": "2.4.7",
+    "@ionic-native/android-permissions": "^5.33.0",
     "@ionic/react": "^5.5.0",
     "@ionic/react-router": "^5.5.0",
     "@testing-library/jest-dom": "^5.11.9",
@@ -17,6 +18,7 @@
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
+    "cordova-plugin-android-permissions": "^1.1.2",
     "firebase": "^8.5.0",
     "ionic": "^5.4.16",
     "ionicons": "^5.4.0",

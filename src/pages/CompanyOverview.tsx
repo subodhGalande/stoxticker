@@ -18,6 +18,7 @@ import {
   IonCardSubtitle,
   IonCardTitle,
 } from "@ionic/react";
+import axios from "axios";
 
 import {
   flash,
@@ -26,14 +27,41 @@ import {
   earthOutline,
   bookmarks,
   cashOutline,
-  caretUpOutline,
   caretDownOutline,
+  calendarClearOutline,
+  caretUpOutline,
 } from "ionicons/icons";
-import React from "react";
-
+import React, { useState } from "react";
+import { RouteComponentProps } from "react-router-dom";
+import { useEffect } from "react";
 import "./CompanyOverview.css";
 
-const CompanyOverview: React.FC = () => {
+interface TickerDetailProps
+  extends RouteComponentProps<{
+    ticker: string;
+  }> {}
+
+const CompanyOverview: React.FC<TickerDetailProps> = ({ match }) => {
+  const [upper, setUpper] = useState({});
+  const [lower, setLower] = useState({});
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.twelvedata.com/quote?symbol=${match.params.ticker}&apikey=860e2a4ebcde4d5882aa0eeede1ca87e`
+      )
+      .then((twelve) => setUpper(twelve.data));
+    console.log(upper);
+
+    //alphavantage api
+
+    axios
+      .get(
+        `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${match.params.ticker}&apikey=L7PARR4XLI2B8Z23`
+      )
+      .then((alpha) => setLower(alpha.data));
+    console.log(lower);
+  }, [match]);
+
   return (
     <IonPage>
       <IonHeader>
@@ -50,26 +78,26 @@ const CompanyOverview: React.FC = () => {
         <div className="CompanyOverview">
           <IonText color="dark">
             <h3>
-              <b>Reliance Industries</b>{" "}
+              <b>{upper["name"]}</b>{" "}
             </h3>
           </IonText>
           <IonText className="ion-text-uppercase" color="medium">
             <h6 className="tickersymbol">
-              <b>rel</b>
+              <b>{upper["symbol"]}</b>
             </h6>
           </IonText>
           <div className="chips">
             <IonChip color="primary">
               <IonIcon icon={cogOutline} color="primary" />
-              <IonLabel>Sector</IonLabel>
+              <IonLabel>{lower["Sector"]}</IonLabel>
             </IonChip>
             <IonChip color="secondary">
               <IonIcon icon={cashOutline} color="secondary" />
-              <IonLabel>Capitalization</IonLabel>
+              <IonLabel>{upper["currency"]}</IonLabel>
             </IonChip>
             <IonChip color="tertiary">
               <IonIcon icon={earthOutline} color="tertiary" />
-              <IonLabel>Exchange</IonLabel>
+              <IonLabel>{upper["exchange"]}</IonLabel>
             </IonChip>
           </div>
           <IonGrid>
@@ -77,13 +105,30 @@ const CompanyOverview: React.FC = () => {
               <IonCol className="tickerprice" size="4">
                 <IonText color="dark">
                   <h1>
-                    <strong>1927.40</strong>
+                    <strong>{parseFloat(upper["close"]).toFixed(2)}</strong>
                   </h1>
                 </IonText>
               </IonCol>
               <IonCol className="tickerchange" size="8">
-                <IonIcon icon={caretUpOutline} color="success"></IonIcon>
-                <IonText color="success">2.69 (0.79%)</IonText>
+                <IonIcon
+                  icon={
+                    `${upper["change"]}`.includes("-")
+                      ? caretDownOutline
+                      : caretUpOutline
+                  }
+                  color={
+                    `${upper["change"]}`.includes("-") ? "danger" : "success"
+                  }
+                ></IonIcon>
+                <IonText
+                  color={
+                    `${upper["change"]}`.includes("-") ? "danger" : "success"
+                  }
+                >
+                  {parseFloat(upper["change"]).toFixed(2)} {"("}{" "}
+                  {parseFloat(upper["percent_change"]).toFixed(2)}
+                  {"%)"}
+                </IonText>
               </IonCol>
             </IonRow>
           </IonGrid>
@@ -95,7 +140,7 @@ const CompanyOverview: React.FC = () => {
                 </IonText>
                 <IonText>
                   <div className="thirdrowvalues">
-                    <span>&#8377;</span> 1926.40
+                    <span>&#8377;</span> {parseFloat(upper["open"]).toFixed(2)}
                   </div>
                 </IonText>
               </IonCol>
@@ -106,7 +151,7 @@ const CompanyOverview: React.FC = () => {
                 </IonText>
                 <IonText>
                   <div className="thirdrowvalues">
-                    <span>&#8377;</span> 1926.40
+                    <span>&#8377;</span> {parseFloat(upper["high"]).toFixed(2)}
                   </div>
                 </IonText>
               </IonCol>
@@ -117,15 +162,15 @@ const CompanyOverview: React.FC = () => {
                 </IonText>
                 <IonText>
                   <div className="thirdrowvalues">
-                    <span>&#8377;</span> 1926.40
+                    <span>&#8377;</span> {parseFloat(upper["low"]).toFixed(2)}
                   </div>
                 </IonText>
               </IonCol>
             </IonRow>
           </IonGrid>
-
-          <div className="graph ion-padding-top ion-text-center">graph</div>
         </div>
+
+        <div className="graph ion-padding-top ion-text-center">graph</div>
         <div className="cards">
           <IonCard>
             <IonCardHeader>
@@ -143,9 +188,7 @@ const CompanyOverview: React.FC = () => {
                       <strong>PE Ratio</strong>
                     </IonText>
                     <IonText>
-                      <div>
-                        <span>&#8377;</span> 1926.40
-                      </div>
+                      <div>{parseFloat(lower["PERatio"]).toFixed(2)}</div>
                     </IonText>
                   </IonCol>
 
@@ -155,7 +198,7 @@ const CompanyOverview: React.FC = () => {
                     </IonText>
                     <IonText>
                       <div>
-                        <span>&#8377;</span> 1926.40
+                        {parseFloat(lower["PriceToBookRatio"]).toFixed(2)}
                       </div>
                     </IonText>
                   </IonCol>
@@ -165,9 +208,7 @@ const CompanyOverview: React.FC = () => {
                       <strong>Div. Yield</strong>
                     </IonText>
                     <IonText>
-                      <div>
-                        <span>&#8377;</span> 1926.40
-                      </div>
+                      <div>{parseFloat(lower["DividendYield"]).toFixed(2)}</div>
                     </IonText>
                   </IonCol>
                 </IonRow>
@@ -178,7 +219,7 @@ const CompanyOverview: React.FC = () => {
                     </IonText>
                     <IonText>
                       <div>
-                        <span>&#8377;</span> 1926.40
+                        {parseFloat(lower["PriceToSalesRatioTTM"]).toFixed(2)}
                       </div>
                     </IonText>
                   </IonCol>
@@ -188,9 +229,7 @@ const CompanyOverview: React.FC = () => {
                       <strong>EPS</strong>
                     </IonText>
                     <IonText>
-                      <div>
-                        <span>&#8377;</span> 1926.40
-                      </div>
+                      <div>{parseFloat(lower["EPS"]).toFixed(2)}</div>
                     </IonText>
                   </IonCol>
 
@@ -200,7 +239,7 @@ const CompanyOverview: React.FC = () => {
                     </IonText>
                     <IonText>
                       <div>
-                        <span>&#8377;</span> 1926.40
+                        {parseFloat(lower["ReturnOnEquityTTM"]).toFixed(2)}
                       </div>
                     </IonText>
                   </IonCol>
@@ -221,12 +260,10 @@ const CompanyOverview: React.FC = () => {
                 <IonRow>
                   <IonCol size="4">
                     <IonText color="dark">
-                      <strong>Market Cap</strong>
+                      <strong>Book Value</strong>
                     </IonText>
                     <IonText>
-                      <div>
-                        <span>&#8377;</span> 1926.40
-                      </div>
+                      <div>{parseFloat(lower["BookValue"]).toFixed(2)} </div>
                     </IonText>
                   </IonCol>
 
@@ -235,9 +272,7 @@ const CompanyOverview: React.FC = () => {
                       <strong>Beta</strong>
                     </IonText>
                     <IonText>
-                      <div>
-                        <span>&#8377;</span> 1926.40
-                      </div>
+                      <div>{parseFloat(lower["Beta"]).toFixed(2)}</div>
                     </IonText>
                   </IonCol>
 
@@ -246,9 +281,7 @@ const CompanyOverview: React.FC = () => {
                       <strong>52WHigh</strong>
                     </IonText>
                     <IonText>
-                      <div>
-                        <span>&#8377;</span> 1926.40
-                      </div>
+                      <div>{parseFloat(lower["52WeekHigh"]).toFixed(2)}</div>
                     </IonText>
                   </IonCol>
                 </IonRow>
@@ -258,20 +291,16 @@ const CompanyOverview: React.FC = () => {
                       <strong>52WLow</strong>
                     </IonText>
                     <IonText>
-                      <div>
-                        <span>&#8377;</span> 1926.40
-                      </div>
+                      <div>{parseFloat(lower["52WeekLow"]).toFixed(2)}</div>
                     </IonText>
                   </IonCol>
 
                   <IonCol>
                     <IonText color="dark">
-                      <strong>Volume</strong>
+                      <strong>Profit Margin</strong>
                     </IonText>
                     <IonText>
-                      <div>
-                        <span>&#8377;</span> 1926.40
-                      </div>
+                      <div>{parseFloat(lower["ProfitMargin"]).toFixed(2)}</div>
                     </IonText>
                   </IonCol>
 
@@ -280,9 +309,7 @@ const CompanyOverview: React.FC = () => {
                       <strong>Diluted EPS</strong>
                     </IonText>
                     <IonText>
-                      <div>
-                        <span>&#8377;</span> 1926.40
-                      </div>
+                      <div>{parseFloat(lower["DilutedEpsTTM"]).toFixed(2)}</div>
                     </IonText>
                   </IonCol>
                 </IonRow>

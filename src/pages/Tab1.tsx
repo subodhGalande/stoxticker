@@ -35,6 +35,7 @@ import {
 } from "ionicons/icons";
 import axios from "axios";
 import Signup from "./Signup";
+import News from "../components/News";
 
 import ExploreContainer from "../components/ExploreContainer";
 import "./Tab1.css";
@@ -93,19 +94,6 @@ const Tab1: React.FC = () => {
     getApple();
 
     //test
-    const getNews = async () => {
-      try {
-        const newsin = await axios.get(
-          "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=25ec636112f94478978f10ce27db744e"
-        );
-        setNews({ items: newsin.data.articles });
-      } catch (err) {
-        // Handle Error Here
-        console.error(err);
-      }
-    };
-
-    getNews();
 
     //news api
   }, []);
@@ -132,7 +120,7 @@ const Tab1: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen={true}>
+      <IonContent>
         <IonList lines="none">
           <IonListHeader>
             <IonText color="primary">
@@ -177,7 +165,6 @@ const Tab1: React.FC = () => {
             <p>£ {parseFloat(inr["USDGBP"]).toFixed(2)}</p>
           </IonItem>
         </IonList>
-
         <IonList lines="none">
           <IonListHeader>
             <IonText color="primary">
@@ -224,31 +211,7 @@ const Tab1: React.FC = () => {
             </IonText>
           </IonListHeader>
         </IonList>
-        <div>
-          <IonSlides options={slideOpts}>
-            {news.items.map((item: any, index) => (
-              <IonSlide key={index}>
-                <IonCard href={item.url}>
-                  <div className="ion-text-start">
-                    <IonCardHeader>
-                      <img src={item.urlToImage} alt="" />
-
-                      <IonCardTitle color="dark">
-                        <h6>{item.title}</h6>
-                      </IonCardTitle>
-                      <IonCardSubtitle>
-                        {item.publishedAt.replace("T", " ").replace("Z", "")}
-                      </IonCardSubtitle>
-                    </IonCardHeader>
-                    <IonCardContent>
-                      <IonText>{item.description}...</IonText>
-                    </IonCardContent>
-                  </div>
-                </IonCard>
-              </IonSlide>
-            ))}
-          </IonSlides>
-        </div>
+        <News />
       </IonContent>
     </IonPage>
   );

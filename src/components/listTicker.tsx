@@ -7,6 +7,8 @@ import {
   IonNote,
 } from "@ionic/react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import "./listTicker.css";
 import { useEffect, useState } from "react";
 import CompanyOverview from "../pages/CompanyOverview";
 
@@ -43,17 +45,19 @@ const ListTicker: React.FC<ListProps> = ({ result }) => {
         </IonText>
       </IonListHeader>
       {ticker.map((item, index) => (
-        <IonItem key={index} routerLink="/CompanyOverview">
-          <IonLabel color="dark">
+        <Link className="liststyle" to={`/Tab2/${item.symbol}`}>
+          <IonItem key={index}>
+            <IonLabel color="dark">
+              <IonText>
+                <strong> {item.symbol} </strong> <br />
+                <IonNote color="secondary">{item.exchange}</IonNote>
+              </IonText>
+            </IonLabel>
             <IonText>
-              <strong> {item.symbol} </strong> <br />{" "}
-              <IonNote color="secondary">{item.exchange}</IonNote>
+              <p>{item.instrument_name}</p>
             </IonText>
-          </IonLabel>
-          <IonText>
-            <p>{item.instrument_name}</p>
-          </IonText>
-        </IonItem>
+          </IonItem>
+        </Link>
       ))}
     </IonList>
   );
