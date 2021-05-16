@@ -1,11 +1,1 @@
-{
-  "linuxAndroidStudioPath": "/snap/android-studio/current/android-studio/bin/studio.sh",
-  "appId": "com.stoxticker.com",
-  "appName": "stoxticker",
-  "webDir": "build",
-  "npmClient": "npm",
-  "allowMixedContent": true,
-  "server": {
-    "url": "http://192.168.0.30:8102"
-  }
-}
+{}
