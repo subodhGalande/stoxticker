@@ -32,6 +32,7 @@ import {
   caretUpOutline,
 } from "ionicons/icons";
 import React, { useState } from "react";
+import Graph from "../components/graph";
 import { RouteComponentProps } from "react-router-dom";
 import { useEffect } from "react";
 import "./CompanyOverview.css";
@@ -170,7 +171,7 @@ const CompanyOverview: React.FC<TickerDetailProps> = ({ match }) => {
           </IonGrid>
         </div>
 
-        <div className="graph ion-padding-top ion-text-center">graph</div>
+        <div className="graph ion-padding-top ion-text-center"></div>
         <div className="cards">
           <IonCard>
             <IonCardHeader>

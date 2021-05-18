@@ -42,7 +42,7 @@ import React from "react";
 import axios from "axios";
 
 const App: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <IonApp>
