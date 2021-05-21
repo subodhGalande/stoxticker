@@ -14,6 +14,7 @@ import {
   IonCard,
   IonCardHeader,
   IonCardContent,
+  useIonToast,
   IonButton,
   IonCardSubtitle,
   IonCardTitle,
@@ -45,6 +46,7 @@ interface TickerDetailProps
 const CompanyOverview: React.FC<TickerDetailProps> = ({ match }) => {
   const [upper, setUpper] = useState({});
   const [lower, setLower] = useState({});
+  const [present, dismiss] = useIonToast();
   useEffect(() => {
     axios
       .get(
@@ -70,7 +72,10 @@ const CompanyOverview: React.FC<TickerDetailProps> = ({ match }) => {
           <IonTitle>
             <strong>Company Overview</strong>
           </IonTitle>
-          <IonButton slot="end">
+          <IonButton
+            onClick={() => present("Added To Watchlist", 3000)}
+            slot="end"
+          >
             <IonIcon icon={bookmarks}></IonIcon>{" "}
           </IonButton>
         </IonToolbar>

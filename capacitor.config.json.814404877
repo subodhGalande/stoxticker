@@ -1,7 +1,4 @@
 {
   "linuxAndroidStudioPath": "/snap/android-studio/current/android-studio/bin/studio.sh",
-  "webDir": "build",
-  "server": {
-    "url": "http://192.168.0.30:8100"
-  }
+  "webDir": "build"
 }

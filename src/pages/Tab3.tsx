@@ -32,33 +32,6 @@ const Tab3: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen={true}>
-        <IonCard routerLink="/CompanyOverview">
-          <IonCardHeader className="ion-float-left">
-            <IonCardTitle color="secondary">
-              {" "}
-              <strong> GOOGL </strong>{" "}
-            </IonCardTitle>
-            <IonCardSubtitle color="primary"> Alphabet Inc. </IonCardSubtitle>
-          </IonCardHeader>
-          <div className="ion-text-end">
-            <IonCardContent className="cardContent">
-              <IonText color="dark">
-                <p>
-                  <strong>$ 4500</strong>
-                </p>
-              </IonText>
-              <IonText color="success">
-                <p>
-                  <span>
-                    {" "}
-                    <IonIcon size="small" icon={caretUpOutline}></IonIcon>{" "}
-                  </span>
-                  1.29 (0.69%)
-                </p>
-              </IonText>
-            </IonCardContent>
-          </div>
-        </IonCard>
         <IonCard>
           <IonCardHeader className="ion-float-left">
             <IonCardTitle color="secondary">
@@ -71,7 +44,7 @@ const Tab3: React.FC = () => {
             <IonCardContent className="cardContent">
               <IonText color="dark">
                 <p>
-                  <strong>$ 6500</strong>
+                  <strong>$ 126.27</strong>
                 </p>
               </IonText>
               <IonText color="danger">
@@ -83,7 +56,7 @@ const Tab3: React.FC = () => {
                       icon={caretDownOutline}
                     ></IonIcon>{" "}
                   </span>
-                  1.29 (0.69%)
+                  -1.18 ( -0.93%)
                 </p>
               </IonText>
             </IonCardContent>
