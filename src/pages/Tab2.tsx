@@ -5,23 +5,36 @@ import {
   IonTitle,
   IonSearchbar,
   IonToolbar,
+  IonIcon,
   IonLabel,
+  IonButton,
   IonItem,
   IonText,
   IonListHeader,
   IonList,
   IonNote,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from "@ionic/react";
-import ExploreContainer from "../components/ExploreContainer";
+
 import "./Tab2.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ListTicker from "../components/listTicker";
-import CompanyOverview from "./CompanyOverview";
-import axios from "axios";
+import { useForm } from "react-hook-form";
 
 const Tab2: React.FC = () => {
-  const [searchText, setSearchText] = useState(" ");
-
+  const [searchText, setSearchText] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    setSearchText(data.SearchTicker);
+  };
+  console.log(errors);
+  console.log(searchText);
   return (
     <IonPage>
       <IonHeader class="ion-no-border">
@@ -31,15 +44,23 @@ const Tab2: React.FC = () => {
           </IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen={true}>
+      <IonContent>
         <br />
-        <IonSearchbar
-          value={searchText}
-          onIonChange={(e) => setSearchText(e.detail.value!)}
-          showCancelButton="never"
-          placeholder="Search Ticker"
-          animated={true}
-        ></IonSearchbar>
+
+        <div className="search">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+              className="search-input"
+              type="text"
+              placeholder="Search Ticker"
+              {...register("SearchTicker")}
+            />{" "}
+            <button className="search-btn" type="submit">
+              <i className="fa fa-search"></i>
+            </button>
+          </form>
+        </div>
+
         <ListTicker result={searchText} />
       </IonContent>
     </IonPage>

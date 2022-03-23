@@ -28,7 +28,7 @@ const Maintabs: React.FC = () => {
             <Tab1 />
           </Route>
 
-          <Route exact path="/Tab2/:ticker" component={CompanyOverview}></Route>
+          <Route exact path="/tab2/:ticker" component={CompanyOverview}></Route>
           <Route exact path="/tab2">
             <Tab2 />
           </Route>

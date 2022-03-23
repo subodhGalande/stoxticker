@@ -18,15 +18,16 @@ interface ListProps {
 
 const ListTicker: React.FC<ListProps> = ({ result }) => {
   const [ticker, setTicker] = useState([]);
+  const alphaKey = "L7PARR4XLI2B8Z23";
 
   useEffect(() => {
     const getTicker = async () => {
       try {
         const res = await axios.get(
-          `https://api.twelvedata.com/symbol_search?symbol=${result}&apikey=860e2a4ebcde4d5882aa0eeede1ca87e`
+          `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${result}&apikey={alphaKey}`
         );
-        setTicker(res.data.data);
-        console.log(res);
+        setTicker(res.data.bestMatches);
+        console.log(res.data.bestMatches);
       } catch (err) {
         console.log("error");
 
@@ -36,31 +37,8 @@ const ListTicker: React.FC<ListProps> = ({ result }) => {
 
     getTicker();
   }, [result]);
-  console.log(ticker);
-  return (
-    <IonList>
-      <IonListHeader>
-        <IonText color="primary">
-          <h5>Results</h5>
-        </IonText>
-      </IonListHeader>
-      {ticker.map((item, index) => (
-        <Link className="liststyle" to={`/Tab2/${item.symbol}`}>
-          <IonItem key={index}>
-            <IonLabel color="dark">
-              <IonText>
-                <strong> {item.symbol} </strong> <br />
-                <IonNote color="secondary">{item.exchange}</IonNote>
-              </IonText>
-            </IonLabel>
-            <IonText>
-              <p>{item.instrument_name}</p>
-            </IonText>
-          </IonItem>
-        </Link>
-      ))}
-    </IonList>
-  );
+
+  return <p>hello</p>;
 };
 
 export default ListTicker;
