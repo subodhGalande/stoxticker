@@ -48,8 +48,6 @@ const Tab1: React.FC = () => {
   const [google, setGoogle] = useState({});
   const [apple, setApple] = useState([]);
 
-  const [news, setNews] = useState({ items: [] });
-
   const alphaKey = "L7PARR4XLI2B8Z23";
   const newsKey = "25ec636112f94478978f10ce27db744e";
 
